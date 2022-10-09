@@ -3,6 +3,7 @@
   margin: 20px;
   font-size: 16px;
   box-sizing: border-box;
+
   .flex {
     display: flex;
   }
@@ -20,6 +21,10 @@
   }
   .text-align-left {
     text-align: left;
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
   }
 
   .flex-container {
@@ -44,6 +49,8 @@
     cursor: pointer;
     text-align: center;
     min-width: 100px;
+    font-size: 20px;
+    font-weight: bold;
   }
 
   textarea {
@@ -57,6 +64,18 @@
     margin: 5px;
     color: #748ffc;
     font-size: 20px;
+    font-weight: bold;
+  }
+
+  textarea,
+  input {
+    font-size: 20px;
+    font-weight: 500;
+    color: #868e96;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0 1px #aaa;
   }
 
   .error {
@@ -67,18 +86,19 @@
   }
 
   .readonly {
-    background: #1b1919;
+    background: #343a40;
     color: white;
     font-size: 20px;
     margin: 20px 0;
     width: 100%;
-    max-height: 320px;
-    min-height: 210px;
+    max-height: 330px;
+    min-height: 212px;
     overflow-y: auto;
     text-align: left;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
   }
   .hide {
     display: none;
@@ -112,7 +132,7 @@
   .decrypt-btn {
     background: #9775fa;
     color: white;
-    font-size: 16px;
+    font-size: 20px;
     border: none;
   }
   .encrypted-data {
@@ -126,5 +146,17 @@
     th {
       color: #f06595;
     }
+  }
+
+  .decrypt-text {
+    font-size: 46px;
+    font-weight: bold;
+    color: #1c7ed6;
+  }
+
+  .gen-crypto-key {
+    background-color: #f783ac;
+    border: none;
+    color: #fff;
   }
 }

@@ -5,8 +5,8 @@ import Error from "./Error";
 
 const DecyrptView = () => {
   const {
-    encryptedText: initialEncryptedText,
-    iv: initialIV,
+    encryptedText: initialEncryptedText = "",
+    iv: initialIV = "",
     encryptionKey: initialEncryptionKey,
   } = window.data?.decrypt || {};
   const [encryptedText, setEncryptedText] = useState(initialEncryptedText);
@@ -34,9 +34,8 @@ const DecyrptView = () => {
         <label htmlFor="encryptedText">Paste the Encrypted Content</label>
         <textarea
           id="encryptedText"
-          rows={5}
+          rows={4}
           className="flex-item "
-          placeholder="Enter the Encrypted Content"
           onChange={(event) => setEncryptedText(event.target.value)}
           value={encryptedText}
         ></textarea>
@@ -72,6 +71,7 @@ const DecyrptView = () => {
               setDecryptedText(data);
             } catch (err) {
               setError("Error while decrypting");
+              console.error(err);
               setDecryptedText("");
             }
           }}
@@ -79,7 +79,9 @@ const DecyrptView = () => {
           {" "}
           Decrypt
         </button>
-        {decryptedText && <div className="flex-item">{decryptedText} </div>}
+        {decryptedText && (
+          <div className="flex-item decrypt-text">{decryptedText} </div>
+        )}
       </div>
       {decryptedText && (
         <Confetti

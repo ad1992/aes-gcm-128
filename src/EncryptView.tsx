@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import clsx from "clsx";
 import {
   deriveEncryptionKeyFromCryptoKey,
   encode,
@@ -81,10 +80,12 @@ const EncryptView = () => {
                     setCryptoKey(null);
                   }}
                 />
-                <label htmlFor="extractable">Extractable</label>
+                <label htmlFor="extractable" className="cursor-pointer">
+                  Extractable
+                </label>
               </div>
               <button
-                className="flex-item"
+                className="flex-item gen-crypto-key"
                 onClick={async () => {
                   const cryptoKey = await generateCryptoKey(extractable);
                   setCryptoKey(cryptoKey);
@@ -98,7 +99,7 @@ const EncryptView = () => {
               </button>{" "}
             </div>
 
-            <div className="flex readonly" style={{ height: "320px" }}>
+            <div className="flex readonly" style={{ height: "330px" }}>
               {cryptoKey ? (
                 <>
                   {showEncryptionKey ? (
@@ -151,9 +152,8 @@ const EncryptView = () => {
             {" "}
             Enter the message
             <textarea
-              rows={5}
+              rows={4}
               className="flex-item wide-100"
-              placeholder="Enter the message"
               value={message}
               onChange={(event) => {
                 setMessage(event.target.value);
@@ -169,7 +169,7 @@ const EncryptView = () => {
               {encodeData && encodeData.length > 0 ? (
                 `[ ${encodeData} ]`
               ) : (
-                <Placeholder text=" The Encoded text will be displayed here" />
+                <Placeholder text="The Encoded text will be displayed here" />
               )}
             </p>
           </label>

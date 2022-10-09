@@ -1,38 +1,130 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  margin: 20px;
+  font-size: 16px;
+  box-sizing: border-box;
+  .flex {
+    display: flex;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .flex-col {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .align-items-center {
+    align-items: center;
+  }
+
+  .justify-content-center {
+    justify-content: center;
+  }
+  .text-align-left {
+    text-align: left;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .wide-100 {
+    width: 100%;
+  }
+  .flex-item {
+    flex: 1;
+    margin: 10px 0;
+    word-break: break-word;
+    padding: 10px;
+  }
+
+  button {
+    padding: 5px;
+    margin: 5px;
+    height: 40px;
+    cursor: pointer;
+    text-align: center;
+    min-width: 100px;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 5px;
+    color: #748ffc;
+    font-size: 20px;
+  }
+
+  .error {
+    color: red;
+    font-weight: bold;
+    font-size: 26px;
+    display: block;
+  }
+
+  .readonly {
+    background: #1b1919;
+    color: white;
+    font-size: 20px;
+    margin: 20px 0;
+    width: 100%;
+    max-height: 320px;
+    min-height: 210px;
+    overflow-y: auto;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hide {
+    display: none;
+  }
+
+  .generate-crypto-key,
+  .data-to-bytes {
+    padding: 20px;
+    width: 50%;
+  }
+
+  .encrypt,
+  .decrypt {
+    background: none;
+    border: none;
+    font-size: 16px;
+    padding: 5px;
+    margin: 5px;
+    font-weight: bold;
+    width: 140px;
+    &.active {
+      background: #9775fa;
+      color: white;
+    }
+  }
+  .switch-view {
+    align-self: flex-start;
+  }
+
+  .encrypt-btn,
+  .decrypt-btn {
+    background: #9775fa;
+    color: white;
+    font-size: 16px;
+    border: none;
+  }
+  .encrypted-data {
+    word-break: break-word;
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: center;
+      padding: 10px;
+    }
+    th {
+      color: #f06595;
+    }
   }
 }

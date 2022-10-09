@@ -64,7 +64,7 @@ const EncryptView = () => {
     return new Uint8Array(encryptedBuffer);
   };
   return (
-    <div className="flex flex-col align-items-center justify-content-center encrypt-view ">
+    <div className="flex flex-col align-items-center justify-content-center encrypt-view">
       <div className="flex wide-100">
         <div className="flex-container generate-crypto-key">
           <div>

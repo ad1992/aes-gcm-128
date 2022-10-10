@@ -58,7 +58,7 @@ export const deriveCryptoKeyfromEncryptionKey = async (
   return cryptoKey;
 };
 
-export const dataToBytes = (data: string) => {
+export const dataToBytes = (data: string | Array<string>) => {
   const arr = Array.from(data) as unknown as ArrayBuffer;
   const bytes = new Uint8Array(arr);
 
@@ -71,7 +71,6 @@ export const decrypt = async (
   iv: Uint8Array
 ) => {
   const cryptoKey = await deriveCryptoKeyfromEncryptionKey(encryptionKey);
-  console.log(cryptoKey, encryptedData, iv);
   const decryptedBuffer = await cryptoSubtle.decrypt(
     {
       name: CRYPTO_ALGO_NAME,
@@ -80,7 +79,6 @@ export const decrypt = async (
     cryptoKey,
     encryptedData
   );
-  console.log("Decrypted buffer", decryptedBuffer);
   const decryptedData = new TextDecoder().decode(decryptedBuffer);
   return decryptedData;
 };

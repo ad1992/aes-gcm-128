@@ -3,7 +3,20 @@ import { dataToBytes, decrypt } from "./crypto";
 import Confetti from "react-confetti";
 import Error from "./Error";
 
+const REGEX_FOR_EXTRACTING_TEXT_FROM_INPUT = /\[(.*)\]/;
+
 const DecyrptView = () => {
+  const sanitizeInput = (
+    input: string,
+    type: "Encrypted Text" | "Initialization Vector"
+  ) => {
+    const val = input.match(REGEX_FOR_EXTRACTING_TEXT_FROM_INPUT)?.[1].trim();
+    if (!val) {
+      setError(`Invalid input for ${type}`);
+      return "";
+    }
+    return val.split(",");
+  };
   const {
     encryptedText: initialEncryptedText = "",
     iv: initialIV = "",
@@ -17,7 +30,6 @@ const DecyrptView = () => {
 
   useEffect(() => {
     return () => {
-      console.log(encryptedText);
       window.data = {
         ...window.data,
         decrypt: {
@@ -63,12 +75,20 @@ const DecyrptView = () => {
           className="flex-item decrypt-btn"
           onClick={async () => {
             try {
+              const encryptedBuffer = dataToBytes(
+                sanitizeInput(encryptedText, "Encrypted Text")
+              );
+
+              const initializationVector = dataToBytes(
+                sanitizeInput(iv, "Initialization Vector")
+              );
               const data = await decrypt(
-                dataToBytes(encryptedText.split(",")),
+                encryptedBuffer,
                 encryptionKey,
-                dataToBytes(iv.split(","))
+                initializationVector
               );
               setDecryptedText(data);
+              setError(null);
             } catch (err) {
               setError("Error while decrypting");
               console.error(err);

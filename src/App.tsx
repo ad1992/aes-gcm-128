@@ -11,7 +11,7 @@ function App() {
   const [activeView, setActiveView] = useState(VIEW.ENCRYPT);
   return (
     <div className="App">
-      <h1>AES-GCM-128 DEMO</h1>
+      <h1>AES-GCM-128 DEMO </h1>
       <div>
         <button
           className={clsx("encrypt", { active: activeView === VIEW.ENCRYPT })}

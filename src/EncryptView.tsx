@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import CopyToClipboard from "./CopyToClipboard";
 import {
   deriveEncryptionKeyFromCryptoKey,
   encode,
@@ -99,16 +100,16 @@ const EncryptView = () => {
               </button>{" "}
             </div>
 
-            <div className="flex readonly" style={{ height: "330px" }}>
+            <div className="flex readonly p-10" style={{ height: "330px" }}>
               {cryptoKey ? (
                 <>
                   {showEncryptionKey ? (
-                    <span className="flex align-items-center justify-content-center wide-100">
+                    <span className="flex align-items-center">
                       {" "}
                       {encryptionKey}
                     </span>
                   ) : (
-                    <pre className="flex-item">
+                    <pre style={{ marginTop: 0 }}>
                       {JSON.stringify(
                         {
                           type: cryptoKey.type,
@@ -122,22 +123,25 @@ const EncryptView = () => {
                     </pre>
                   )}
                   {error && <Error error={error} />}
-                  <button
-                    className="switch-view"
-                    onClick={async () => {
-                      try {
-                        const encryptionKey =
-                          await deriveEncryptionKeyFromCryptoKey(cryptoKey);
-                        setError(null);
-                        setEncryptionKey(encryptionKey);
-                        setShowEncryptionKey(!showEncryptionKey);
-                      } catch (err: any) {
-                        setError(err.message);
-                      }
-                    }}
-                  >
-                    {showEncryptionKey ? "Hide" : "View"}
-                  </button>
+                  <div className="align-self-baseline">
+                    {encryptionKey && <CopyToClipboard text={encryptionKey} />}
+                    <button
+                      className="view-encryption-key"
+                      onClick={async () => {
+                        try {
+                          const encryptionKey =
+                            await deriveEncryptionKeyFromCryptoKey(cryptoKey);
+                          setError(null);
+                          setEncryptionKey(encryptionKey);
+                          setShowEncryptionKey(!showEncryptionKey);
+                        } catch (err: any) {
+                          setError(err.message);
+                        }
+                      }}
+                    >
+                      {showEncryptionKey ? "Hide" : "View"}
+                    </button>
+                  </div>
                 </>
               ) : (
                 <Placeholder text="The Crypto Key will be displayed here" />
@@ -164,14 +168,17 @@ const EncryptView = () => {
 
           <label>
             Encoded Data
-            <p className="readonly flex-item">
+            <div className="readonly flex-item">
               {" "}
               {encodeData && encodeData.length > 0 ? (
-                `[ ${encodeData} ]`
+                <p className="flex-1 p-10"> {`[ ${encodeData} ]`} </p>
               ) : (
                 <Placeholder text="The Encoded text will be displayed here" />
               )}
-            </p>
+              {encodeData && encodeData.length > 0 && (
+                <CopyToClipboard text={`[ ${encodeData} ]`} />
+              )}
+            </div>
           </label>
         </div>
       </div>
@@ -202,24 +209,32 @@ const EncryptView = () => {
       <div className="flex wide-100">
         <label className=" data-to-bytes">
           Encrypted Buffer
-          <p className="readonly flex-item">
+          <div className="readonly flex-item">
             {encryptedBuffer ? (
-              `[ ${renderEncryptedContent(encryptedBuffer)} ]`
+              <p className="flex-1 p-10">{`[ ${renderEncryptedContent(
+                encryptedBuffer
+              )} ]`}</p>
             ) : (
               <Placeholder text="The Encrypted Buffer  will be displayed here" />
             )}{" "}
-          </p>
+            {encryptedBuffer && (
+              <CopyToClipboard
+                text={`[ ${renderEncryptedContent(encryptedBuffer)} ]`}
+              />
+            )}
+          </div>
         </label>
 
         <label className=" data-to-bytes">
           Initialization Vector
-          <p className="readonly flex-item">
+          <div className="readonly flex-item">
             {iv ? (
-              `[ ${iv} ]`
+              <p className="flex-1p-10"> {`[ ${iv} ]`}</p>
             ) : (
               <Placeholder text=" The Initialization Vector will be displayed here" />
             )}{" "}
-          </p>
+            {iv && <CopyToClipboard text={`[ ${iv} ]`} />}
+          </div>
         </label>
       </div>
     </div>

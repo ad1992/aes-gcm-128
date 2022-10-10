@@ -3,6 +3,7 @@ import "./App.scss";
 import DecyrptView from "./DecryptView";
 import EncryptView from "./EncryptView";
 import clsx from "clsx";
+import GitHubCorner from "./GitHubCorner";
 const VIEW = {
   ENCRYPT: 0,
   DECRYPT: 1,
@@ -11,6 +12,7 @@ function App() {
   const [activeView, setActiveView] = useState(VIEW.ENCRYPT);
   return (
     <div className="App">
+      <GitHubCorner />
       <h1>AES-GCM-128 DEMO </h1>
       <div>
         <button

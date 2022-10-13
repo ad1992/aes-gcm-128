@@ -167,7 +167,7 @@ const EncryptView = () => {
           </label>
 
           <label>
-            Encoded Data
+            Data in bytes
             <div className="readonly flex-item">
               {" "}
               {encodeData && encodeData.length > 0 ? (

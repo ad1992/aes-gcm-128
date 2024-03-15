@@ -1,4 +1,3 @@
-const cryptoSubtle = window.crypto.subtle;
 const CRYPTO_ALGO_NAME = "AES-GCM";
 
 export const encode = (text: string) => {
@@ -18,7 +17,7 @@ export const generateCryptoKey = async (extractable: boolean) => {
 };
 export const encrypt = async (text: string, cryptoKey: CryptoKey) => {
   const iv = crypto.getRandomValues(new Uint8Array(12));
-  const encryptedBuffer = await cryptoSubtle.encrypt(
+  const encryptedBuffer = await window.crypto.subtle.encrypt(
     {
       name: CRYPTO_ALGO_NAME,
       iv,
@@ -71,7 +70,7 @@ export const decrypt = async (
   iv: Uint8Array
 ) => {
   const cryptoKey = await deriveCryptoKeyfromEncryptionKey(encryptionKey);
-  const decryptedBuffer = await cryptoSubtle.decrypt(
+  const decryptedBuffer = await window.crypto.subtle.decrypt(
     {
       name: CRYPTO_ALGO_NAME,
       iv,

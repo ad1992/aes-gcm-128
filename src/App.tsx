@@ -19,7 +19,7 @@ function App() {
           className={clsx("encrypt", { active: activeView === VIEW.ENCRYPT })}
           onClick={() => setActiveView(VIEW.ENCRYPT)}
         >
-          Encyrpt
+          Encrypt
         </button>
         <button
           className={clsx("decrypt", { active: activeView === VIEW.DECRYPT })}

@@ -1,8 +1,8 @@
 .App {
   text-align: center;
   margin: 20px;
-  font-size: 16px;
   box-sizing: border-box;
+  font-size: 1.25rem;
 
   .flex {
     display: flex;
@@ -11,6 +11,7 @@
   .flex-col {
     flex-direction: column;
   }
+
   .flex-1 {
     flex: 1;
   }
@@ -26,6 +27,7 @@
   .justify-content-center {
     justify-content: center;
   }
+
   .text-align-left {
     text-align: left;
   }
@@ -39,9 +41,11 @@
     flex-direction: column;
     flex-wrap: wrap;
   }
+
   .wide-100 {
     width: 100%;
   }
+
   .flex-item {
     flex: 1;
     margin: 10px 0;
@@ -60,7 +64,6 @@
     cursor: pointer;
     text-align: center;
     min-width: 100px;
-    font-size: 20px;
     font-weight: bold;
   }
 
@@ -73,37 +76,34 @@
     flex-direction: column;
     align-items: flex-start;
     margin: 5px;
-    color: #748ffc;
-    font-size: 20px;
+    color: #343a40;
     font-weight: bold;
   }
 
   textarea,
   input {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 500;
-    color: #868e96;
-    font-weight: bold;
+    color: #343a40;
     border: none;
     border-radius: 0.25rem;
     box-shadow: 0 0 0 1px #aaa;
   }
 
   .error {
-    color: red;
+    color: #ffa8a8;
     font-weight: bold;
-    font-size: 26px;
+    font-size: 1.625rem;
     display: block;
   }
 
   .readonly {
     background: #343a40;
     color: white;
-    font-size: 20px;
     margin: 20px 0;
     width: 100%;
-    max-height: 330px;
-    min-height: 230px;
+    max-height: 230px;
+    min-height: 130px;
     overflow-y: auto;
     text-align: left;
     display: flex;
@@ -120,18 +120,21 @@
   .view-encryption-key {
     border: none;
     min-width: auto;
-    font-size: 13px;
+    font-size: 1rem;
     height: 2rem;
     color: #fff;
     font-weight: bold;
   }
 
   .copy {
-    background: #faa2c1;
+    background: #ffe066;
+    color: #000;
+
   }
 
   .view-encryption-key {
-    background: #4dabf7;
+    background: #ffe066;
+    color: #000;
   }
 
   .generate-crypto-key,
@@ -144,39 +147,44 @@
   .decrypt {
     background: none;
     border: none;
-    font-size: 20px;
     padding: 5px;
     margin: 5px;
     font-weight: bold;
     width: 140px;
+    font-size: 1.25rem;
+
+
     &.active {
-      border-bottom: 3px solid #748ffc;
+      border-bottom: 3px solid #1971c2;
     }
   }
+
   .switch-view {
     align-self: flex-start;
   }
 
   .encrypt-btn,
   .decrypt-btn {
-    background: #9775fa;
+    background: #1971c2;
     color: white;
-    font-size: 20px;
     border: none;
+    font-size: 1.25rem;
   }
+
   .encrypted-data {
     word-break: break-word;
   }
 
   .decrypt-text {
-    font-size: 46px;
+    font-size: 2.85rem;
     font-weight: bold;
-    color: #1c7ed6;
+    color: #1971c2
   }
 
   .gen-crypto-key {
-    background-color: #f783ac;
+    background-color: #d6336c;
     border: none;
     color: #fff;
+    font-size: 1.25rem;
   }
 }

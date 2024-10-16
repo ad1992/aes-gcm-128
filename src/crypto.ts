@@ -15,6 +15,7 @@ export const generateCryptoKey = async (extractable: boolean) => {
   );
   return key;
 };
+
 export const encrypt = async (text: string, cryptoKey: CryptoKey) => {
   const iv = crypto.getRandomValues(new Uint8Array(12));
   const encryptedBuffer = await window.crypto.subtle.encrypt(

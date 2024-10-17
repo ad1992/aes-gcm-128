@@ -81,7 +81,11 @@ const EncryptView = () => {
                     setCryptoKey(null);
                   }}
                 />
-                <label htmlFor="extractable" className="cursor-pointer">
+                <label
+                  htmlFor="extractable"
+                  className="cursor-pointer"
+                  style={{ color: "#099268", fontSize: "1.8rem" }}
+                >
                   Extractable
                 </label>
               </div>
